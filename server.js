@@ -16,7 +16,9 @@ const serveFile = async (filePath, contentType, response) => {
         const rawData = await fsPromises.readFile(filePath, !contentType.includes("image") ? "utf8" : "");
         const data = contentType === "application/json"
             ? JSON.parse(rawData) : rawData;
-        response.writeHead(200, {"ContentType": contentType});
+        response.writeHead(
+            filePath.includes("404.html") ? 404 : 200, 
+            {"ContentType": contentType}); // this is by convention and standard and browser understands it and then parses the type of file accordingly (MIME - Multipurpose Internet Mail Extensions)
         response.end( contentType === "application/json" ? JSON.stringify(data) : data );
     } catch (er) {
         console.error(er);
