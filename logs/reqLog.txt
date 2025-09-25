@@ -1,0 +1,6 @@
+25-09-2025 	 21:35:23 	 61edc446-d6d5-49fe-91de-be3cd1ef3a57 	 /404	GET
+25-09-2025 	 21:35:23 	 b5a89fd5-a168-459e-9a72-85533b33f2f1 	 /.well-known/appspecific/com.chrome.devtools.json	GET
+25-09-2025 	 21:35:30 	 deda986d-402a-4190-ba98-c9c4a70b78bf 	 /oldPage	GET
+25-09-2025 	 21:35:30 	 d3154d84-5f6c-4484-9732-78efa6d78e26 	 /newPage.html	GET
+25-09-2025 	 21:35:30 	 05246c28-d6d3-4757-9c4e-20a831f4f008 	 /.well-known/appspecific/com.chrome.devtools.json	GET
+25-09-2025 	 21:35:30 	 b025e313-7422-4421-b65e-41425e95bc21 	 /img/img1.jpg	GET

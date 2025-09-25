@@ -8,7 +8,7 @@ const EventEmitter = require("events");
 class MyEmitter extends EventEmitter{};
 
 const myEmitter = new MyEmitter();
-
+myEmitter.on("log", (msg, fileName) => {logEvents(msg, fileName)});
 const PORT = process.env.PORT || 3500;
 
 const serveFile = async (filePath, contentType, response) => {
@@ -26,6 +26,7 @@ const serveFile = async (filePath, contentType, response) => {
         response.end( contentType === "application/json" ? JSON.stringify(data) : data );
     } catch (er) {
         console.error(er);
+        myEmitter.emit("log", `${er.name}: ${er.message}`, "errLog.txt");
         response.statusCode = 500; // server error
         response.end();
     }
@@ -33,7 +34,7 @@ const serveFile = async (filePath, contentType, response) => {
 
 const server = http.createServer((req, res) => {
     console.log(req.url, req.method);
-
+    myEmitter.emit("log", `${req.url}\t${req.method}`, "reqLog.txt");
     const extension = path.extname(req.url);
 
     let contentType;
@@ -96,7 +97,3 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => console.log(`Server is running at the port ${PORT}.`)) // At the end of server file
-
-
-// myEmitter.on("log", (msg) => {logEvents(msg)});
-// myEmitter.emit("log", "Log event emitted...");
